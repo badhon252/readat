@@ -1,8 +1,6 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
-
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -12,6 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import NewsSearch from "@/lib/NewsSearch";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -111,6 +110,9 @@ export default function Navbar() {
               ))}
             </ul>
           </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NewsSearch />
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

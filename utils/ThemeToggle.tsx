@@ -6,7 +6,7 @@ const ThemeToggle = () => {
   const [isDarkMode, setIsDarkMode] = useState(
     () =>
       typeof window !== "undefined" &&
-      window.localStorage.getItem("theme") === "dark",
+      window.localStorage.getItem("theme") === "dark"
   );
   const [mounted, setMounted] = useState(false); // Track whether component has mounted
 
@@ -31,4 +31,4 @@ const ThemeToggle = () => {
   );
 };
 
-export default ThemeToggle; 
+export default ThemeToggle;

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import {
   Card,
@@ -8,34 +9,34 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import React, { useEffect, useState } from "react";
-import { fetchPosts } from "@/lib/fetchData";
 import Link from "next/link"; // Import Link for navigation
+import { useNewsStore } from "@/store/useNewsStore";
+import { useFetchNewsOnMount } from "@/hooks/useFetchNewsOnMount";
 
 export default function Travel() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // Fetch news on first mount
+  useFetchNewsOnMount();
+
+  // Get news from Zustand store
+  const news = useNewsStore((state) => state.news);
+
+  // Local state for posts and loading/error indicators
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Update posts when news changes
   useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        const data = await fetchPosts(); // Fetch all posts
-        setPosts(data); // Update posts
-        setLoading(false); // Turn off loading
-      } catch (err) {
-        setError("Failed to load posts");
-        setLoading(false);
-      }
-    };
-
-    loadPosts();
-  }, []);
+    if (news) {
+      setPosts(news);
+      setLoading(false);
+    }
+  }, [news]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  // Display only the first 4 posts
+  // Display only the first 8 posts
   const postsToShow = posts.slice(0, 8);
 
   return (
@@ -43,16 +44,30 @@ export default function Travel() {
       <h1 className="text-3xl font-bold">Travel</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {postsToShow.map((post) => (
-          <Card key={post.id} className="flex flex-col h-full">
+          <Card key={post.url} className="flex flex-col h-full">
             <CardHeader>
               <CardTitle>{post.title}</CardTitle>
-              <CardDescription>{post.body}</CardDescription>
+              <CardDescription>{post.description}</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow">
-              <p>Card Content</p>
+              <img
+                src={post.image}
+                alt={post.title}
+                className="w-full h-auto"
+              />
+              <p>
+                Published at: {new Date(post.publishedAt).toLocaleDateString()}
+              </p>
             </CardContent>
             <CardFooter>
-              <p>Card Footer</p>
+              <a
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                Read more
+              </a>
             </CardFooter>
           </Card>
         ))}

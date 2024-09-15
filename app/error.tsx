@@ -9,9 +9,11 @@ export default function GlobalError({
   return (
     // global-error must include html and body tags
     <html>
-      <body>
+      <body className="flex flex-col items-center justify-center min-h-screen text-xl">
         <h2>Something went wrong!</h2>
-        <button onClick={() => reset()}>Try again</button>
+        <button onClick={() => reset()} className="text-blue-500">
+          Try again
+        </button>
       </body>
     </html>
   );
