@@ -1,9 +1,6 @@
 import { create } from "zustand";
-
-interface NewsResponse {
-  totalArticles: number;
-  articles: Article[];
-}
+import useSWR from "swr";
+import { useEffect } from "react";
 
 // Define types for the API response
 interface Article {
@@ -22,26 +19,48 @@ interface Article {
 // Define the Zustand store
 interface NewsStore {
   news: Article[] | null;
-  fetchNews: () => Promise<void>;
+  isLoading: boolean;
+  error: "" | null;
 }
 
-// Create the Zustand store
-export const useNewsStore = create<NewsStore>((set) => ({
-  news: null, // Initially no news data
+interface NewsResponse {
+  totalArticles: number;
+  articles: Article[];
+}
 
-  // Fetch news from the API
-  fetchNews: async () => {
-    try {
-      const response = await fetch(
-        `https://gnews.io/api/v4/top-headlines?token=${process.env.API_KEY}`
-      );
-      const data: NewsResponse = await response.json();
-
-      set({
-        news: data.articles, // Set news articles in store
-      });
-    } catch (error) {
-      console.error("Failed to fetch news:", error);
-    }
-  },
+export const useNewsStore = create<NewsStore>(() => ({
+  news: null,
+  isLoading: true,
+  error: null,
 }));
+
+// Function to fetch data from your API (outside the store)
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  const data: NewsResponse = await response.json();
+  return data;
+};
+
+// Create a custom hook to manage SWR data and Zustand updates
+const useFetchNews = () => {
+  const { data, error } = useSWR<NewsResponse>(
+    `https://gnews.io/api/v4/top-headlines?token=${process.env.API_KEY}`,
+    fetcher
+  );
+
+  useEffect(() => {
+    if (data) {
+      useNewsStore.setState({
+        news: data.articles,
+        isLoading: false,
+      });
+    } else if (error) {
+      useNewsStore.setState({ error, isLoading: false });
+    }
+  }, [data, error]);
+};
+
+// Trigger the data fetch on first mount
+export const useFetchNewsOnMount = () => {
+  useFetchNews(); // Call your custom hook to manage data and Zustand
+};

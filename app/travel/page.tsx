@@ -1,32 +1,9 @@
-"use client";
-import { useEffect } from "react";
-import { useNewsStore } from "@/store/newsStore"; // Import the Zustand store
+import React from "react";
 
-const NewsComponent = () => {
-  const { news, fetchNews, isLoading, error } = useNewsStore();
-
-  // Fetch the news when the component mounts
-  useEffect(() => {
-    if (!news) {
-      fetchNews();
-    }
-  }, [news, fetchNews]);
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
+export default function page() {
   return (
     <div>
-      {news?.articles.map((article) => (
-        <div key={article.url}>
-          <h2>{article.title}</h2>
-          <p>{article.description}</p>
-          <img src={article.image} alt={article.title} />
-          <a href={article.url}>Read more</a>
-        </div>
-      ))}
+      <h1>This is the Travel component</h1>
     </div>
   );
-};
-
-export default NewsComponent;
+}
