@@ -11,12 +11,8 @@ import {
 import React, { useEffect, useState } from "react";
 import Link from "next/link"; // Import Link for navigation
 import { useNewsStore } from "@/store/useNewsStore";
-import { useFetchNewsOnMount } from "@/hooks/useFetchNewsOnMount";
 
 export default function Travel() {
-  // Fetch news on first mount
-  useFetchNewsOnMount();
-
   // Get news from Zustand store
   const news = useNewsStore((state) => state.news);
 

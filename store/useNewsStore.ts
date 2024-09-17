@@ -33,7 +33,7 @@ export const useNewsStore = create<NewsStore>((set) => ({
   fetchNews: async () => {
     try {
       const response = await fetch(
-        "https://gnews.io/api/v4/top-headlines?token=e344f6dc2a28ce2ece063810e711e5a4"
+        `https://gnews.io/api/v4/top-headlines?token=${process.env.API_KEY}`
       );
       const data: NewsResponse = await response.json();
 
