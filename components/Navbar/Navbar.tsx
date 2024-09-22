@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -10,7 +9,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import NewsSearch from "@/lib/NewsSearch";
+import { useFetchNewsOnMount } from "@/store/useNewsStore";
+// import NewsSearch from "@/lib/NewsSearch";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -51,6 +51,7 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export default function Navbar() {
+  useFetchNewsOnMount();
   return (
     <NavigationMenu className="hidden lg:block  bg-lime-50 mx-auto my-4">
       <NavigationMenuList>
@@ -111,9 +112,7 @@ export default function Navbar() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NewsSearch />
-        </NavigationMenuItem>
+        <NavigationMenuItem>{/* <NewsSearch /> */}</NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );

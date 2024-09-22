@@ -10,12 +10,9 @@ import {
 } from "@/components/ui/card";
 import React, { useEffect, useState } from "react";
 import Link from "next/link"; // Import Link for navigation
-import { useNewsStore } from "@/store/useNewsStore";
+import { NewsData } from "@/type/types";
 
-export default function Travel() {
-  // Get news from Zustand store
-  const news = useNewsStore((state) => state.news);
-
+export default function News({ news }: { news: NewsData }) {
   // Local state for posts and loading/error indicators
   const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -25,6 +22,9 @@ export default function Travel() {
   useEffect(() => {
     if (news) {
       setPosts(news);
+      setLoading(false);
+    } else {
+      setError("Failed to fetch news data");
       setLoading(false);
     }
   }, [news]);
@@ -36,21 +36,25 @@ export default function Travel() {
   const postsToShow = posts.slice(0, 8);
 
   return (
-    <div className="p-4">
-      <h1 className="text-3xl font-bold">Travel</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {postsToShow.map((post) => (
           <Card key={post.url} className="flex flex-col h-full">
+            {/* Card content including image and description should have size and length limitations */}
             <CardHeader>
-              <CardTitle>{post.title}</CardTitle>
-              <CardDescription>{post.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-auto"
+                className="w-full h-40 object-cover rounded-lg" // Fixed height (adjust as needed)
               />
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <CardTitle>{post.title}</CardTitle>
+
+              <CardDescription>
+                {post.description.slice(0, 100)}...
+                {/* Fixed length (adjust as needed) */}
+              </CardDescription>
               <p>
                 Published at: {new Date(post.publishedAt).toLocaleDateString()}
               </p>

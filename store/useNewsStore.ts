@@ -1,3 +1,4 @@
+"use client";
 import { create } from "zustand";
 import useSWR from "swr";
 import { persist, PersistStorage } from "zustand/middleware";
@@ -38,10 +39,16 @@ interface NewsResponse {
 // Define the Zustand store with persistence
 interface NewsStore {
   featuredNews: Article[] | null;
-  latestNews: Article[] | null;
   sportsNews: Article[] | null;
   travelNews: Article[] | null;
   politicsNews: Article[] | null;
+  worldNews: Article[] | null;
+  nationNews: Article[] | null;
+  businessNews: Article[] | null;
+  technologyNews: Article[] | null;
+  entertainmentNews: Article[] | null;
+  scienceNews: Article[] | null;
+  healthNews: Article[] | null;
   isLoading: { [key: string]: boolean };
   error: { [key: string]: string | null };
   setNews: (key: keyof NewsStore, articles: Article[]) => void;
@@ -71,23 +78,42 @@ export const useNewsStore = create<NewsStore>()(
   persist(
     (set) => ({
       featuredNews: null,
-      latestNews: null,
       sportsNews: null,
       travelNews: null,
       politicsNews: null,
+      worldNews: null,
+      nationNews: null,
+      businessNews: null,
+      technologyNews: null,
+      entertainmentNews: null,
+      scienceNews: null,
+      healthNews: null,
+
       isLoading: {
         featuredNews: true,
-        latestNews: true,
         sportsNews: true,
         travelNews: true,
         politicsNews: true,
+        worldNews: true,
+        nationNews: true,
+        businessNews: true,
+        technologyNews: true,
+        entertainmentNews: true,
+        scienceNews: true,
+        healthNews: true,
       },
       error: {
         featuredNews: null,
-        latestNews: null,
         sportsNews: null,
         travelNews: null,
         politicsNews: null,
+        worldNews: null,
+        nationNews: null,
+        businessNews: null,
+        technologyNews: null,
+        entertainmentNews: null,
+        scienceNews: null,
+        healthNews: null,
       },
       setNews: (key, articles) =>
         set((state) => ({
@@ -116,7 +142,7 @@ export const useNewsStore = create<NewsStore>()(
 const useFetchNews = (
   key: keyof NewsStore,
   url: string,
-  dedupingInterval = 60000 // Cache SWR response for 60 seconds to avoid duplicate requests
+  dedupingInterval = 600000 // Cache SWR response for 60 minutes to avoid duplicate requests
 ) => {
   const setNews = useNewsStore((state) => state.setNews);
   const setError = useNewsStore((state) => state.setError);
@@ -142,12 +168,6 @@ const useFetchNews = (
 export const useFetchFeaturedNews = () =>
   useFetchNews(
     "featuredNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&max=5`
-  );
-
-export const useFetchLatestNews = () =>
-  useFetchNews(
-    "latestNews",
     `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&max=10`
   );
 
@@ -169,11 +189,59 @@ export const useFetchPoliticsNews = () =>
     `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=politics`
   );
 
-// Use on mount to prefetch multiple sections if needed
+export const useFetchWorldNews = () =>
+  useFetchNews(
+    "worldNews",
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=world`
+  );
+
+export const useFetchNationNews = () =>
+  useFetchNews(
+    "nationNews",
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=nation`
+  );
+
+export const useFetchBusinessNews = () =>
+  useFetchNews(
+    "businessNews",
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=business`
+  );
+
+export const useFetchTechnologyNews = () =>
+  useFetchNews(
+    "technologyNews",
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=technology`
+  );
+
+export const useFetchEntertainmentNews = () =>
+  useFetchNews(
+    "entertainmentNews",
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=entertainment`
+  );
+
+export const useFetchScienceNews = () =>
+  useFetchNews(
+    "scienceNews",
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=science`
+  );
+
+export const useFetchHealthNews = () =>
+  useFetchNews(
+    "healthNews",
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=health`
+  );
+
+// Use on mount to prefetch multiple sections if needed (adjust as needed)
 export const useFetchNewsOnMount = () => {
   useFetchFeaturedNews();
-  useFetchLatestNews();
   useFetchSportsNews();
   useFetchTravelNews();
   useFetchPoliticsNews();
+  useFetchWorldNews();
+  useFetchNationNews();
+  useFetchBusinessNews();
+  useFetchTechnologyNews();
+  useFetchEntertainmentNews();
+  useFetchScienceNews();
+  useFetchHealthNews();
 };
