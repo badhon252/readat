@@ -7,8 +7,7 @@ export default function Travel() {
 
   return (
     <div>
-      <h1 className="text-3xl font-black">Travel News</h1>
-      <News news={newsData} />
+      <News news={newsData} title={"Travel News"} />
     </div>
   );
 }

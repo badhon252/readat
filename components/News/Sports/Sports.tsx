@@ -8,8 +8,8 @@ export default function Sports() {
   if (!newsData) return <div>Loading...</div>;
 
   return (
-    <div>
-      <News news={newsData} />
-    </div>
+    <>
+      <News news={newsData} title={"Sports News"} />
+    </>
   );
 }

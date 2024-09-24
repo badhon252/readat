@@ -1,12 +1,12 @@
 import News from "../News";
 import { useNewsStore } from "@/store/useNewsStore";
 
-export default function Entertainment() {
+export default function ScienceNews() {
   const newsData = useNewsStore((state) => state.entertainmentNews) || [];
   if (!newsData) return <div>Loading...</div>;
   return (
     <>
-      <News news={newsData} title={"Entertainments News"} />
+      <News news={newsData} title={"Science News"} />
     </>
   );
 }
