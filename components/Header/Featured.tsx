@@ -29,11 +29,11 @@ export function CarouselPlugin() {
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
-      <CarouselContent className="xsm:w-2/3 flex overflow-hidden">
+      <CarouselContent className="xsm:w-2/3 cursor-grab ">
         {featuredNews?.map((article, index) => (
           <CarouselItem key={index}>
             <Card>
-              <div className="relative p-1 h-48 sm:h-60 md:h-72 lg:h-80 xl:h-[40rem]">
+              <div className="relative  h-48 sm:h-60 md:h-72 lg:h-80 xl:h-[40rem]">
                 <img
                   src={article.image}
                   alt={article.title}

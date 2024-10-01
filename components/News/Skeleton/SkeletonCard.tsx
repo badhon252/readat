@@ -11,9 +11,9 @@ import {
 export const SkeletonCard = () => (
   <Card className="flex flex-col h-full justify-around">
     <CardHeader className="">
-      <Skeleton className="w-full h-40 rounded-lg" />
+      <Skeleton className="w-full h-96 rounded-lg" />
     </CardHeader>
-    <CardContent className="flex-grow">
+    {/* <CardContent className="flex-grow">
       <div className="flex items-center justify-between py-2">
         <Skeleton className="w-1/2 h-4 rounded-lg" />
         <Skeleton className="w-1/4 h-4 rounded-lg" />
@@ -24,6 +24,6 @@ export const SkeletonCard = () => (
     <CardFooter className="flex justify-between">
       <Skeleton className="w-1/2 h-6 rounded-lg" />
       <Skeleton className="w-1/4 h-4 rounded-lg" />
-    </CardFooter>
+    </CardFooter> */}
   </Card>
 );

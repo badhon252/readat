@@ -47,7 +47,7 @@ export default function News({
         </Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-        {postsToShow?.map((post) => (
+        {postsToShow.map((post) => (
           <Card key={post.url} className="flex flex-col h-full justify-around">
             {/* Card content including image and description should have size and length limitations */}
             <CardHeader>
