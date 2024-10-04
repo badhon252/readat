@@ -12,10 +12,6 @@ import {
 import { useFetchNewsOnMount, useNewsStore } from "@/store/useNewsStore";
 // import NewsSearch from "@/lib/NewsSearch";
 
-const components: { title: string; href: string; description: string }[] = [
-  // ... your components array
-];
-
 export default function Navbar() {
   const data = useNewsStore((state) => state.featuredNews);
   console.log(data);

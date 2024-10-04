@@ -1,3 +1,9 @@
+/* useNewsStore.ts
+ *This file defines a Zustand store for managing news data. It uses SWR for data fetching and persistence.
+ *The store is initialized with a custom localStorage wrapper to persist the data across sessions.
+ *The store has several getters and setters for managing the state, including loading and error states.
+ *The store also has a fetchNews function that fetches news data from the API and updates the store.
+ */
 "use client";
 import { create } from "zustand";
 import useSWR from "swr";
@@ -168,67 +174,67 @@ const useFetchNews = (
 export const useFetchFeaturedNews = () =>
   useFetchNews(
     "featuredNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&max=10`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&lang=en`
   );
 
 export const useFetchSportsNews = () =>
   useFetchNews(
     "sportsNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=sports`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=sports&lang=en`
   );
 
 export const useFetchTravelNews = () =>
   useFetchNews(
     "travelNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=travel`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=travel&lang=en`
   );
 
 export const useFetchPoliticsNews = () =>
   useFetchNews(
     "politicsNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=politics`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=politics&lang=en`
   );
 
 export const useFetchWorldNews = () =>
   useFetchNews(
     "worldNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=world`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=world&lang=en`
   );
 
 export const useFetchNationNews = () =>
   useFetchNews(
     "nationNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=nation`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=nation&lang=en`
   );
 
 export const useFetchBusinessNews = () =>
   useFetchNews(
     "businessNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=business`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=business&lang=en`
   );
 
 export const useFetchTechnologyNews = () =>
   useFetchNews(
     "technologyNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=technology`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=technology&lang=en`
   );
 
 export const useFetchEntertainmentNews = () =>
   useFetchNews(
     "entertainmentNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=entertainment`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=entertainment&lang=en`
   );
 
 export const useFetchScienceNews = () =>
   useFetchNews(
     "scienceNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=science`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=science&lang=en`
   );
 
 export const useFetchHealthNews = () =>
   useFetchNews(
     "healthNews",
-    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=health`
+    `/top-headlines?token=${process.env.NEXT_PUBLIC_API_KEY}&category=health&lang=en`
   );
 
 // Use on mount to prefetch multiple sections if needed (adjust as needed)

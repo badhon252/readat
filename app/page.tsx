@@ -17,16 +17,16 @@ export default function Home() {
       {/* Featured  */}
       <HeroSection />
       {/* Categories  */}
-      <LatestNews />
+      {/* <LatestNews /> */}
       {/* slider  */}
 
-      <Politics />
+      {/* <Politics /> */}
       <Sports />
       <Travel />
-      <Entertainment />
+      {/* <Entertainment />
       <NationNews />
       <HelthNews />
-      <ScienceNews />
+      <ScienceNews /> */}
     </div>
   );
 }

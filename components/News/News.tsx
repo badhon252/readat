@@ -35,7 +35,7 @@ export default function News({
   const postsToShow = posts.slice(0, 8);
 
   return (
-    <div className="">
+    <div className="border rounded-lg m-4">
       {/* "See All" Link */}
       <div className="mt-4 px-4 py-4 flex justify-between items-center">
         <h1 className="text-4xl font-black">{title}</h1>
@@ -43,7 +43,7 @@ export default function News({
           href="/latest-news"
           className=" text-red-600 text-md flex-wrap hover:underline"
         >
-          🔜See All
+          See All
         </Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
