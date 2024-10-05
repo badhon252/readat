@@ -1,6 +1,7 @@
 import React from "react";
 import News from "../News";
 import { useNewsStore } from "@/store/useNewsStore";
+import Cards from "@/components/Card/Cards";
 
 export default function Politics() {
   const newsData = useNewsStore((state) => state.politicsNews) || [];
@@ -10,7 +11,7 @@ export default function Politics() {
   // }
   return (
     <div>
-      <News news={newsData} title={"Politics News"} />
+      <Cards news={newsData} title={"Politics News"} />
     </div>
   );
 }

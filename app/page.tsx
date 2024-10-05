@@ -9,6 +9,7 @@ import Politics from "@/components/News/Politics/Politics";
 import ScienceNews from "@/components/News/scienceNews/ScienceNews";
 import Sports from "@/components/News/Sports/Sports";
 import Travel from "@/components/News/Travel/Travel";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -17,16 +18,28 @@ export default function Home() {
       {/* Featured  */}
       <HeroSection />
       {/* Categories  */}
-      {/* <LatestNews /> */}
+      <LatestNews />
+      <Sports />
+      <ScienceNews />
+
       {/* slider  */}
 
-      {/* <Politics /> */}
-      <Sports />
+      <Politics />
       <Travel />
-      {/* <Entertainment />
       <NationNews />
+      <Entertainment />
       <HelthNews />
-      <ScienceNews /> */}
+      {/* Footer  */}
+      <div className="text-center p-8">
+        Made with 💙 by{" "}
+        <Link
+          href="https://badhon.vercel.app"
+          target="_blank"
+          className="text-blue-700 underline"
+        >
+          KHB
+        </Link>
+      </div>
     </div>
   );
 }

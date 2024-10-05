@@ -1,32 +1,40 @@
-import { Card, CardContent, CardHeader } from "../ui/card";
+import Link from "next/link";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { Article } from "@/type/types";
+import { timeSince } from "@/utils/timeUtils";
 
 export default function PostCard({ post }: { post: Article }) {
   return (
-    <Card className=" dark:text-white text-slate-950 flex items-center">
-      {/* Wrap the image and details in a single div for proper grid layout */}
-      <CardHeader className="md:col-span-1 p-0 m-2">
-        {/* Image */}
-        <img
-          src={post.image}
-          alt={`Image for article titled: ${post.title}`}
-          className="w-30 h-20 object-cover rounded-lg"
-        />
-      </CardHeader>
-      <CardContent className="">
-        <a
-          href={post.url}
-          target="_blank"
-          className=" text-xs font-semibold sm:text-sm my-2 md:my-0"
-          aria-label={`Read more about: ${post.title}`}
-        >
-          "{post.description.slice(0, 50)}.."
-        </a>
-        <p className="text-xs sm:text-sm my-2">
-          {" "}
-          {post.description.slice(0, 100)}...
-        </p>
-      </CardContent>
-    </Card>
+    <Link href={post.url} target="_blank">
+      <Card
+        className="relative w-full h-full  overflow-hidden flex flex-col justify-end  transform transition duration-500 hover:scale-105"
+        style={{
+          backgroundImage: `url(${post.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <CardHeader className="font-semibold flex flex-row justify-between py-2 z-30">
+          {/* News source name */}
+          <h3 className="bg-red-600 text-white p-1 rounded-lg text-xs font-semibold">
+            {post.source.name}
+          </h3>
+          <p className="text-slate-200 text-sm">
+            {timeSince(post.publishedAt)}
+          </p>
+        </CardHeader>
+        <CardContent className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/90 to-transparent" />
+        <CardContent className=" text-white  z-50">
+          {/* Increased z-index */}
+          <h1
+            className="text-white text-xl font-semibold "
+            aria-label={`Read more about: ${post.title}`}
+          >
+            {post.title.slice(0, 50)}
+          </h1>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }

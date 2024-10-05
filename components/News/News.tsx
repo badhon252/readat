@@ -11,6 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import Link from "next/link"; // Import Link for navigation
 import { NewsData } from "@/type/types";
+import { timeSince } from "@/utils/timeUtils";
 
 export default function News({
   news,
@@ -66,7 +67,7 @@ export default function News({
                   {post.source.name}
                 </Link>
                 <p className="text-slate-600 text-sm ">
-                  {new Date(post.publishedAt).toDateString()}
+                  {timeSince(post.publishedAt)}
                 </p>
               </div>
               <CardTitle className="text-xl font-semibold text-slate-800">

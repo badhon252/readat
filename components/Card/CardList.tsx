@@ -41,16 +41,18 @@ export default function CardList({
           See All
         </Link>
       </div>
-      <div className="grid grid-cols-8 grid-rows-3 gap-4">
-        <div className="col-span-2 row-span-3">
+      <div className="grid grid-cols-8 grid-rows-3 gap-6">
+        <div className="col-span-2 row-span-3 transform transition duration-500 hover:scale-105">
           {postsToShow.length > 0 && (
             <NewsCard
               title={postsToShow[0].title}
-              description={postsToShow[0].description}
+              description={" "}
               source={postsToShow[0].source}
               url={postsToShow[0].url}
               image={postsToShow[0].image}
               publishedAt={postsToShow[0].publishedAt}
+              height="h-[40rem]"
+              width="w-full"
             />
           )}
         </div>
@@ -69,15 +71,17 @@ export default function CardList({
             <PostCard post={postsToShow[4]} />
           </div>
         )}
-        <div className="col-span-2 row-span-3 col-start-5 row-start-1">
+        <div className="col-span-2 row-span-3 col-start-5 row-start-1 transform transition duration-500 hover:scale-105">
           {postsToShow.length > 5 && (
             <NewsCard
               title={postsToShow[1].title}
-              description={postsToShow[1].description}
+              description={" "}
               source={postsToShow[1].source}
               url={postsToShow[1].url}
               image={postsToShow[1].image}
               publishedAt={postsToShow[1].publishedAt}
+              height="h-[40rem]"
+              width="w-full"
             />
           )}
         </div>

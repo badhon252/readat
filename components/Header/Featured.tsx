@@ -7,13 +7,13 @@ import * as React from "react";
 import { useNewsStore } from "@/store/useNewsStore";
 // Carousel Component and Plugin
 import Autoplay from "embla-carousel-autoplay";
-
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import Link from "next/link";
+import { timeSince } from "@/utils/timeUtils";
 
 export function CarouselPlugin() {
   // Get Zustand state values
@@ -26,7 +26,7 @@ export function CarouselPlugin() {
   return (
     <Carousel
       plugins={[plugin.current]} // Apply the Autoplay plugin
-      className="w-full max-w-screen mx-auto m-4" // Full width with max width on large screens
+      className="w-full max-w-screen mx-auto my-32" // Full width with max width on large screens
       onMouseEnter={plugin.current.stop} // Stop autoplay on mouse enter
       onMouseLeave={plugin.current.reset} // Resume autoplay on mouse leave
       aria-roledescription="carousel"
@@ -58,7 +58,7 @@ export function CarouselPlugin() {
                     {article.source.name}
                   </span>
                   <span className="text-sm">
-                    {new Date(article.publishedAt).toDateString()}
+                    {timeSince(article.publishedAt)}
                   </span>
                 </div>
                 <a
@@ -78,9 +78,6 @@ export function CarouselPlugin() {
                   >
                     Read more
                   </Link>
-                  <span className="text-xs sm:text-sm my-2 mx-4">
-                    4 min read
-                  </span>
                 </div>
               </div>
             </div>

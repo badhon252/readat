@@ -1,10 +1,11 @@
+"use client";
+import { CarouselList } from "@/components/Carousel/Carousel";
 import LatestNews from "@/components/News/latest-news/LatestNews";
-import React from "react";
 
 export default function page() {
   return (
-    <div>
-      <LatestNews />
+    <div className="container mx-auto">
+      <CarouselList />
     </div>
   );
 }

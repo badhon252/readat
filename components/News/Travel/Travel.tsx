@@ -1,5 +1,6 @@
-import News from "../News";
 import { useNewsStore } from "@/store/useNewsStore";
+import CardList from "@/components/Card/CardList";
+import News from "../News";
 export default function Travel() {
   // Get news from Zustand store
   const newsData = useNewsStore((state) => state.travelNews) || null;
@@ -7,7 +8,7 @@ export default function Travel() {
 
   return (
     <div>
-      <News news={newsData} title={"Travel News"} />
+      <News news={newsData} title={"Travel News"} />{" "}
     </div>
   );
 }

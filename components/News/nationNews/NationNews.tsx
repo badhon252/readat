@@ -1,12 +1,8 @@
-import News from "../News";
+import CardList from "@/components/Card/CardList";
 import { useNewsStore } from "@/store/useNewsStore";
 
 export default function NationNews() {
   const newsData = useNewsStore((state) => state.nationNews) || [];
   if (!newsData) return <div>Loading...</div>;
-  return (
-    <>
-      <News news={newsData} title={"National News"} />
-    </>
-  );
+  return <CardList news={newsData} title={"National News"} />;
 }
