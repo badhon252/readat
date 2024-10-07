@@ -3,7 +3,6 @@ import { useNewsStore } from "@/store/useNewsStore";
 import Link from "next/link";
 import PostCard from "../Card/postCard";
 import NewsCard from "../Card/NewsCard";
-import { title } from "process";
 
 export default function Explore() {
   const featuredNews = useNewsStore((state) => state.featuredNews) || [];
@@ -31,7 +30,7 @@ export default function Explore() {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <a
+            <Link
               className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
               href="/"
             >
@@ -40,23 +39,148 @@ export default function Explore() {
               <p className=" leading-tight text-muted-foreground z-50 text-white text-2xl font-semibold">
                 Explore All the News Category
               </p>
-            </a>
+            </Link>
           </NavigationMenuLink>
         </div>
       </div>
       <div className="overflow-y-auto px-4 w-full">
         <ul className="flex flex-col ">
-          {featuredNews?.map((post) => (
-            <li className="my-2 ">
-              <NewsCard
-                title="Featured news"
-                url="/"
-                image={post.image}
-                height="h-[6rem]"
-                width="w-full"
-              />
-            </li>
-          ))}
+          <li key={nationNews[0].url + nationNews[0].image} className="my-2 ">
+            <NewsCard
+              title="Nation news"
+              url="/"
+              image={nationNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li
+            key={featuredNews[0].url + featuredNews[0].image}
+            className="my-2 "
+          >
+            <NewsCard
+              title="Featured news"
+              url="/"
+              image={featuredNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li
+            key={businessNews[0].url + businessNews[0].image}
+            className="my-2 "
+          >
+            <NewsCard
+              title="Business News"
+              url="/"
+              image={businessNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li
+            key={entertainmentNews[0].url + entertainmentNews[0].image}
+            className="my-2 "
+          >
+            <NewsCard
+              title="Entertainment News"
+              url="/"
+              image={entertainmentNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li key={healthNews[0].url + healthNews[0].image} className="my-2 ">
+            <NewsCard
+              title="Health News"
+              url="/"
+              image={healthNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li
+            key={politicsNews[0].url + politicsNews[0].image}
+            className="my-2 "
+          >
+            <NewsCard
+              title="Politics News"
+              url="/"
+              image={politicsNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li key={scienceNews[0].url + scienceNews[0].image} className="my-2 ">
+            <NewsCard
+              title="Science News"
+              url="/"
+              image={scienceNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li key={sportsNews[0].url + sportsNews[0].image} className="my-2 ">
+            <NewsCard
+              title="Sports News"
+              url="/"
+              image={sportsNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li key={travelNews[0].url + travelNews[0].image} className="my-2 ">
+            <NewsCard
+              title="Travel News"
+              url="/"
+              image={travelNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li
+            key={technologyNews[0].url + technologyNews[0].image}
+            className="my-2 "
+          >
+            <NewsCard
+              title="Technology News"
+              url="/"
+              image={technologyNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
+          <li key={worldNews[0].url + worldNews[0].image} className="my-2 ">
+            <NewsCard
+              title="World News"
+              url="/"
+              image={worldNews[0].image}
+              height="h-[8rem]"
+              width="w-full"
+              description={""}
+              publishedAt={""}
+            />
+          </li>
         </ul>
       </div>
     </div>

@@ -60,6 +60,9 @@ interface NewsStore {
   setNews: (key: keyof NewsStore, articles: Article[]) => void;
   setError: (key: keyof NewsStore, errorMessage: string | null) => void;
   setLoading: (key: keyof NewsStore, loading: boolean) => void;
+  allNews: Article[] | null;
+  searchQuery: string | null;
+  searchResults: Article[] | null;
 }
 
 // Custom localStorage wrapper to satisfy PersistStorage<NewsStore>
@@ -136,6 +139,13 @@ export const useNewsStore = create<NewsStore>()(
         set((state) => ({
           isLoading: { ...state.isLoading, [key]: loading },
         })),
+      allNews: null,
+      setAllNews: (articles: any) => set((state) => ({ allNews: articles })),
+      searchQuery: null,
+      searchResults: null,
+      setSearchQuery: (query: any) => set((state) => ({ searchQuery: query })),
+      setSearchResults: (results: any) =>
+        set((state) => ({ searchResults: results })),
     }),
     {
       name: "news-storage", // Local storage key
@@ -148,21 +158,28 @@ export const useNewsStore = create<NewsStore>()(
 const useFetchNews = (
   key: keyof NewsStore,
   url: string,
-  dedupingInterval = 600000 // Cache SWR response for 60 minutes to avoid duplicate requests
+  dedupingInterval = 600000
 ) => {
   const setNews = useNewsStore((state) => state.setNews);
   const setError = useNewsStore((state) => state.setError);
   const setLoading = useNewsStore((state) => state.setLoading);
+  const setAllNews = useNewsStore((state) => state.setAllNews);
+  const allNews = useNewsStore((state) => state.allNews);
 
   const { data, error } = useSWR<NewsResponse>(url, axiosFetcher, {
     dedupingInterval,
-    revalidateOnFocus: false, // Avoid refetching on window focus
-    revalidateOnReconnect: true, // Revalidate on reconnect
+    revalidateOnFocus: false,
+    revalidateOnReconnect: true,
   });
 
   useEffect(() => {
     if (data) {
       setNews(key, data.articles);
+      if (allNews) {
+        setAllNews([...allNews, ...data.articles]);
+      } else {
+        setAllNews(data.articles);
+      }
     } else if (error) {
       setError(key, error.message);
     }
