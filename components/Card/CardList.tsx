@@ -30,7 +30,7 @@ export default function CardList({
   const postsToShow = posts.slice(0, 9);
 
   return (
-    <div className="border rounded-lg m-4">
+    <div className=" rounded-lg m-4">
       {/* "See All" Link */}
       <div className="mt-4 px-4 py-4 flex justify-between items-center">
         <h1 className="text-4xl font-black">{title}</h1>

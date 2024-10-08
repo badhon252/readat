@@ -44,6 +44,9 @@ interface NewsResponse {
 
 // Define the Zustand store with persistence
 interface NewsStore {
+  setAllNews: any;
+  setSearchQuery: any;
+  setSearchResults: any;
   featuredNews: Article[] | null;
   sportsNews: Article[] | null;
   travelNews: Article[] | null;

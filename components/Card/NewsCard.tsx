@@ -3,11 +3,9 @@ import {
   CardContent,
   CardTitle,
   CardDescription,
-  CardFooter,
 } from "@/components/ui/card";
 import Link from "next/link";
 import { timeSince } from "@/utils/timeUtils";
-import { Badge } from "@/components/ui/badge";
 
 interface NewsCardProps {
   title: string;

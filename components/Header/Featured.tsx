@@ -47,7 +47,7 @@ export function CarouselPlugin() {
               <img
                 src={article.image}
                 alt={`Image for article titled: ${article.title}`}
-                className="w-full h-[200px] sm:h-[250px] md:h-[300px] object-cover rounded-lg"
+                className="w-full h-[300px] sm:h-[350px] md:h-[400px] object-cover rounded-lg"
               />
             </div>
             {/* Details */}

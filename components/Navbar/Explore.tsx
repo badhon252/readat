@@ -1,7 +1,6 @@
 import { NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { useNewsStore } from "@/store/useNewsStore";
 import Link from "next/link";
-import PostCard from "../Card/postCard";
 import NewsCard from "../Card/NewsCard";
 
 export default function Explore() {

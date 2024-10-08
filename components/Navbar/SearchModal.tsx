@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useSearchNews } from "@/hooks/useSearchNews";
 import PostCard from "../Card/postCard";
+import NewsCard from "../Card/NewsCard";
+import { title } from "process";
 
 interface SearchResultsModalProps {
   isModalOpen: boolean;
@@ -44,7 +46,14 @@ export default function SearchResultsModal({
       <ul>
         {searchResults.map((article) => (
           <li key={article.title}>
-            <PostCard post={article} />
+            <NewsCard
+              title={article.title}
+              url={article.url}
+              image={article.image}
+              source={article.source}
+              height="h-32"
+              width="w-64"
+            />
           </li>
         ))}
       </ul>

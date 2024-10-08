@@ -13,8 +13,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="container mx-auto">
-      <Navbar />
+    <div className="container mx-auto border">
       {/* Featured  */}
       <HeroSection />
       {/* Categories  */}

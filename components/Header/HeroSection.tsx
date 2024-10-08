@@ -3,7 +3,7 @@ import { CarouselPlugin } from "./Featured";
 
 export default function HeroSection() {
   return (
-    <div className="container ">
+    <div className="container m-4">
       <CarouselPlugin />
     </div>
   );
