@@ -36,12 +36,12 @@ export default function News({
   const postsToShow = posts.slice(0, 8);
 
   return (
-    <div className=" rounded-lg">
+    <div className=" rounded-lg py-20">
       {/* "See All" Link */}
       <div className="mt-4 px-4 py-4 flex justify-between items-center">
         <h1 className="text-4xl font-black">{title}</h1>
         <Link
-          href="/latest-news"
+          href={`/category/${encodeURIComponent(title.toLowerCase())}`} // Dynamic category link
           className=" text-red-600 text-md flex-wrap hover:underline"
         >
           See All

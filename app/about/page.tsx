@@ -5,12 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { CarouselSpacing } from "@/components/Carousel/Carousel";
+import { useNewsStore } from "@/store/useNewsStore";
 
 export default function AboutPage() {
+  const news = useNewsStore((state) => state.allNews) || [];
   return (
     <section className="flex flex-col items-center justify-center min-h-screen p-4">
       <header className="text-2xl font-bold mb-4">About Aconews</header>
-      <CarouselSpacing />
+      <CarouselSpacing articles={news} />
       <Card className="max-w-md rounded-lg shadow-md">
         <CardHeader>
           <CardTitle>Our Mission</CardTitle>

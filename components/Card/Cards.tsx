@@ -12,6 +12,7 @@ export default function Cards({
 }: {
   news: NewsData;
   title: string;
+  len: number;
 }) {
   // Local state for posts and loading/error indicators
   const [posts, setPosts] = useState<any[]>([]);
@@ -31,10 +32,10 @@ export default function Cards({
       {/* "See All" Link */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800">
-          {title}
+          {title} News
         </h1>
         <Link
-          href="/latest-news"
+          href={`/category/${encodeURIComponent(title.toLowerCase())}`} // Dynamic category link
           className="text-blue-600 text-sm md:text-md lg:text-lg hover:underline"
         >
           See All

@@ -19,7 +19,8 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <NavigationMenu className="container mx-auto my-4 ">
+    <NavigationMenu className=" mx-auto my-4 fixed z-50 top-0 left-0 right-0 bg-white rounded-xl">
+      {/* <NavigationMenuList className=" bg-gradient-to-t bg-white/10 filter blur-md fixed z-40 top-0 left-0 right-0 h-24 w-full" /> */}
       <NavigationMenuList className="flex justify-between items-center w-full">
         <div>
           {/* Aconews Logo */}

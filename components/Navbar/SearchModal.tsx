@@ -40,10 +40,10 @@ export default function SearchResultsModal({
 
   return (
     <div
-      className="bg-white shadow-md p-4 rounded w-96 absolute top-10 right-0 z-10"
+      className="bg-white shadow-md p-4 rounded w-96 absolute top-10 right-0 z-10 h-[40rem] overflow-hidden"
       ref={modalRef}
     >
-      <ul>
+      <ul className="flex flex-col gap-4 ">
         {searchResults.map((article) => (
           <li key={article.title}>
             <NewsCard
@@ -51,8 +51,8 @@ export default function SearchResultsModal({
               url={article.url}
               image={article.image}
               source={article.source}
-              height="h-32"
-              width="w-64"
+              height="h-36"
+              width=""
             />
           </li>
         ))}

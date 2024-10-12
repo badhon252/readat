@@ -22,7 +22,6 @@ export default function Home() {
       <ScienceNews />
 
       {/* slider  */}
-
       <Politics />
       <Travel />
       <NationNews />

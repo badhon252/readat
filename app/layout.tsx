@@ -16,7 +16,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "ACONEWS",
-  description: "Next Generation News App",
+  description:
+    "Next Generation News App, ACONEWS is a news aggregator app built using Next.js, React, and Tailwind CSS. It provides a user-friendly interface for accessing latest news articles from various sources, including GNews.io, The New York Times, and The Guardian. The app is designed to be responsive and accessible, ensuring a seamless user experience across different devices.",
 };
 
 export default function RootLayout({

@@ -10,7 +10,7 @@ export default function Sports() {
 
   return (
     <>
-      <CardList news={newsData} title={"Sports News"} />
+      <CardList news={newsData} title={"Sports"} />
     </>
   );
 }

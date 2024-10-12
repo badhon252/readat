@@ -12,7 +12,7 @@ export default function LatestNews() {
   }
   return (
     <>
-      <News news={newsData} title={"Latest News"} />
+      <News news={newsData} title={"World"} />
     </>
   );
 }

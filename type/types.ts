@@ -2,6 +2,7 @@
 
 // Type for a single news article
 type Article = {
+  [x: string]: any;
   title: string;
   description: string;
   content: string;
