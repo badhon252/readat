@@ -17,6 +17,7 @@ const validCategories = [
   "entertainment",
   "science",
   "world",
+  "travel",
   "nation", // Added nation
 ];
 
