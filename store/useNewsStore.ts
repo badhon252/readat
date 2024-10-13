@@ -10,6 +10,7 @@ import useSWR from "swr";
 import { persist, PersistStorage } from "zustand/middleware";
 import axios from "axios";
 import { useEffect } from "react";
+import { Article } from "@/type/types";
 
 // Axios instance for centralized API handling
 const axiosInstance = axios.create({
@@ -24,18 +25,6 @@ const axiosFetcher = (url: string) =>
   axiosInstance.get(url).then((res) => res.data);
 
 // Define types for the API response
-interface Article {
-  title: string;
-  description: string;
-  content: string;
-  url: string;
-  image: string;
-  publishedAt: string;
-  source: {
-    name: string;
-    url: string;
-  };
-}
 
 interface NewsResponse {
   totalArticles: number;

@@ -47,7 +47,7 @@ export default function Explore() {
           <li key={nationNews[0].url + nationNews[0].image} className="my-2 ">
             <NewsCard
               title="Nation news"
-              url="/"
+              url="/category/nation"
               image={nationNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -61,7 +61,7 @@ export default function Explore() {
           >
             <NewsCard
               title="Featured news"
-              url="/"
+              url="/category/featured"
               image={featuredNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -75,7 +75,7 @@ export default function Explore() {
           >
             <NewsCard
               title="Business News"
-              url="/"
+              url="/category/business"
               image={businessNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -89,7 +89,7 @@ export default function Explore() {
           >
             <NewsCard
               title="Entertainment News"
-              url="/"
+              url="/category/entertainment"
               image={entertainmentNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -100,7 +100,7 @@ export default function Explore() {
           <li key={healthNews[0].url + healthNews[0].image} className="my-2 ">
             <NewsCard
               title="Health News"
-              url="/"
+              url="/category/health"
               image={healthNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -114,7 +114,7 @@ export default function Explore() {
           >
             <NewsCard
               title="Politics News"
-              url="/"
+              url="/category/politics"
               image={politicsNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -125,7 +125,7 @@ export default function Explore() {
           <li key={scienceNews[0].url + scienceNews[0].image} className="my-2 ">
             <NewsCard
               title="Science News"
-              url="/"
+              url="/category/science"
               image={scienceNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -136,7 +136,7 @@ export default function Explore() {
           <li key={sportsNews[0].url + sportsNews[0].image} className="my-2 ">
             <NewsCard
               title="Sports News"
-              url="/"
+              url="/category/sports"
               image={sportsNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -147,7 +147,7 @@ export default function Explore() {
           <li key={travelNews[0].url + travelNews[0].image} className="my-2 ">
             <NewsCard
               title="Travel News"
-              url="/"
+              url="/category/travel"
               image={travelNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -161,7 +161,7 @@ export default function Explore() {
           >
             <NewsCard
               title="Technology News"
-              url="/"
+              url="/category/technology"
               image={technologyNews[0].image}
               height="h-[8rem]"
               width="w-full"
@@ -172,7 +172,7 @@ export default function Explore() {
           <li key={worldNews[0].url + worldNews[0].image} className="my-2 ">
             <NewsCard
               title="World News"
-              url="/"
+              url="/category/world"
               image={worldNews[0].image}
               height="h-[8rem]"
               width="w-full"
