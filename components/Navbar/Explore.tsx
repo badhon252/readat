@@ -53,6 +53,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li
@@ -67,6 +71,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li
@@ -81,6 +89,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li
@@ -95,6 +107,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li key={healthNews[0].url + healthNews[0].image} className="my-2 ">
@@ -106,6 +122,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li
@@ -120,6 +140,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li key={scienceNews[0].url + scienceNews[0].image} className="my-2 ">
@@ -131,6 +155,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li key={sportsNews[0].url + sportsNews[0].image} className="my-2 ">
@@ -142,6 +170,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li key={travelNews[0].url + travelNews[0].image} className="my-2 ">
@@ -153,6 +185,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li
@@ -167,6 +203,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
           <li key={worldNews[0].url + worldNews[0].image} className="my-2 ">
@@ -178,6 +218,10 @@ export default function Explore() {
               width="w-full"
               description={""}
               publishedAt={""}
+              source={{
+                name: "",
+                url: "",
+              }}
             />
           </li>
         </ul>

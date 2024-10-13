@@ -29,7 +29,7 @@ export default function Navbar() {
           </NavigationMenuItem>
         </div>
 
-        <div>
+        <div className="flex">
           {/* Hamburger Menu Button (Mobile Only) */}
           <div className="lg:hidden">
             <button
@@ -59,16 +59,18 @@ export default function Navbar() {
               isMenuOpen ? "block" : "hidden"
             }`}
           >
-            <NavigationMenuItem className="block  px-6">
+            <NavigationMenuItem className="block  ">
               <NavigationMenuTrigger>Explore</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <Explore />
               </NavigationMenuContent>
             </NavigationMenuItem>
-            <NavigationMenuItem className="hidden lg:block px-6">
-              <Link href="/about">About</Link>
+            <NavigationMenuItem className="lg:block px-4">
+              <Link href="/about" className="">
+                About
+              </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem className="hidden lg:block px-6">
+            <NavigationMenuItem className="lg:block">
               <SearchInput setIsModalOpen={setIsModalOpen} />
               <SearchResultsModal
                 isModalOpen={isModalOpen}

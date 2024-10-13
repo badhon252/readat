@@ -53,6 +53,8 @@ export default function SearchResultsModal({
               source={article.source}
               height="h-36"
               width=""
+              description={""}
+              publishedAt={""}
             />
           </li>
         ))}

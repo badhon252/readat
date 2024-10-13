@@ -11,7 +11,7 @@ export default function Politics() {
   // }
   return (
     <div>
-      <Cards news={newsData} title={"politics"} />
+      <Cards news={newsData} title={"politics"} len={9} />
     </div>
   );
 }

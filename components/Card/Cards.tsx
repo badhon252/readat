@@ -9,6 +9,7 @@ import NewsCard from "./NewsCard";
 export default function Cards({
   news,
   title,
+  len,
 }: {
   news: NewsData;
   title: string;
@@ -25,7 +26,7 @@ export default function Cards({
   }, [news]);
 
   // Display only the first 9 posts
-  const postsToShow = posts.slice(0, 9);
+  const postsToShow = posts.slice(0, len);
 
   return (
     <div className=" mx-4 rounded-lg shadow-md bg-white">
@@ -55,6 +56,7 @@ export default function Cards({
               image={post.image}
               publishedAt={post.publishedAt}
               height="h-64"
+              width={""}
             />
             {/*                 
                 {index % 2 === 0 ? (

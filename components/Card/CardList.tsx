@@ -32,7 +32,7 @@ export default function CardList({
   return (
     <div className=" rounded-lg m-4">
       {/* "See All" Link */}
-      <div className="mt-4 px-4 py-4 flex justify-between items-center">
+      <div className="mt-4 px-4 py-4 flex flex-wrap justify-between items-center">
         <h1 className="text-4xl font-black">{title} news</h1>
         <Link
           href={`/category/${encodeURIComponent(title.toLowerCase())}`} // Dynamic category link

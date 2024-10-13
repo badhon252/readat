@@ -46,9 +46,9 @@ const NewsCard: React.FC<NewsCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <CardContent className="relative z-10 p-4 text-white">
           <div className="flex items-center justify-between py-2">
-            {source ? (
+            {source.name ? (
               <h3 className="bg-red-600 text-white p-1 rounded-lg text-xs font-semibold">
-                {source?.name}
+                {source.name}
               </h3>
             ) : null}
             {publishedAt ? (
