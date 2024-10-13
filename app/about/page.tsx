@@ -1,13 +1,9 @@
 // write code and content for the /about page of 'Aconews'
-"use client";
-import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { useNewsStore } from "@/store/useNewsStore";
 
 export default function AboutPage() {
-  const news = useNewsStore((state) => state.businessNews) || [];
   return (
     <section className="flex flex-col items-center justify-center min-h-screen p-4">
       <header className="text-2xl font-bold mb-4">About Aconews</header>
