@@ -13,7 +13,7 @@ import {
 import NewsCard from "../Card/NewsCard";
 import { Article } from "@/type/types";
 
-export function CarouselSpacing({ articles }: { articles: Article }) {
+export function CarouselSpacing({ articles }: { articles: Article[] }) {
   // const articles = useNewsStore((state) => state.businessNews) || [];
   return (
     <Carousel className="w-full max-w-7xl mx-auto ">
