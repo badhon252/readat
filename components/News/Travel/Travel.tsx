@@ -6,5 +6,5 @@ export default function Travel() {
   const newsData = useNewsStore((state) => state.travelNews) || null;
   if (!newsData) return <div>Loading...</div>;
 
-  return <News news={newsData} title={"Travel"} />;
+  return <News news={newsData} title={"Travel"} len={8} />;
 }

@@ -6,7 +6,7 @@ export default function TechnologyNews() {
   if (!newsData) return <div>Loading...</div>;
   return (
     <>
-      <News news={newsData} title={"Tech News"} />
+      <News news={newsData} title={"Tech News"} len={8} />
     </>
   );
 }

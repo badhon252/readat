@@ -6,7 +6,7 @@ export default function Entertainment() {
   if (!newsData) return <div>Loading...</div>;
   return (
     <>
-      <News news={newsData} title={"Entertainment"} />
+      <News news={newsData} title={"Entertainment"} len={8} />
     </>
   );
 }

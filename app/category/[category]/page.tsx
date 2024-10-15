@@ -5,6 +5,7 @@ import { FC } from "react";
 import "tailwindcss/tailwind.css";
 import { useNewsStore } from "@/store/useNewsStore";
 import News from "@/components/News/News";
+// import CardList from "@/components/Card/CardList";
 
 const validCategories = [
   "featured",
@@ -38,7 +39,8 @@ const CategoryPage: FC = () => {
       <h1 className="text-3xl font-black pt-8 text-purple-700">
         Top Stories on {category}
       </h1>
-      <News news={newsData} title={""} />
+
+      <News news={newsData} title={""} len={8} />
     </div>
   );
 };

@@ -12,13 +12,16 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link"; // Import Link for navigation
 import { NewsData } from "@/type/types";
 import { timeSince } from "@/utils/timeUtils";
+import CategoriesLink from "../Category/CategoriesLInk";
 
 export default function News({
   news,
   title,
+  len = 8,
 }: {
   news: NewsData;
   title: string;
+  len: number;
 }) {
   // Local state for posts and loading/error indicators
   const [posts, setPosts] = useState<any[]>([]);
@@ -33,19 +36,14 @@ export default function News({
   }, [news]);
 
   // Display only the first 8 posts
-  const postsToShow = posts.slice(0, 8);
+  const postsToShow = posts.slice(0, len);
 
   return (
-    <div className=" rounded-lg py-20">
+    <div className=" rounded-lg">
       {/* "See All" Link */}
       <div className="mt-4 px-4 py-4 flex justify-between items-center">
         <h1 className="text-4xl font-black">{title}</h1>
-        <Link
-          href={`/category/${encodeURIComponent(title.toLowerCase())}`} // Dynamic category link
-          className=" text-red-600 text-md flex-wrap hover:underline"
-        >
-          See All
-        </Link>
+        {title ? <CategoriesLink title={title} /> : ""}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
         {postsToShow.map((post) => (
@@ -86,9 +84,9 @@ export default function News({
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-slate-700 text-white rounded hover:bg-slate-950"
               >
-                Read more
+                Continue reading..
               </a>
-              <p className="px-2 text-sm text-right">5 min read</p>
+              {/* <p className="px-2 text-sm text-right">5 min read</p> */}
             </CardFooter>
           </Card>
         ))}
