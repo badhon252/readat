@@ -39,7 +39,7 @@ export default function News({
   const postsToShow = posts.slice(0, len);
 
   return (
-    <div className=" rounded-lg">
+    <div className="rounded-lg my-12">
       {/* "See All" Link */}
       <div className="mt-4 px-4 py-4 flex justify-between items-center">
         <h1 className="text-4xl font-black">{title}</h1>

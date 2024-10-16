@@ -36,7 +36,7 @@ const CategoryPage: FC = () => {
 
   return (
     <div className="pt-20 min-h-screen mx-auto flex items-center flex-col justify-around container">
-      <h1 className="text-3xl font-black pt-8 text-purple-700">
+      <h1 className="text-6xl font-black pt-8 text-purple-700">
         Top Stories on {category}
       </h1>
 

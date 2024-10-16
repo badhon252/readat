@@ -7,7 +7,7 @@ export default function PostCard({ post }: { post: Article }) {
   return (
     <Link href={post.url} target="_blank">
       <Card
-        className="relative w-full h-full  overflow-hidden flex flex-col justify-end  transform transition duration-500 hover:scale-105"
+        className="relative w-full h-64 md:h-full  overflow-hidden flex flex-col justify-end  transform transition duration-500 hover:scale-105"
         style={{
           backgroundImage: `url(${post.image})`,
           backgroundSize: "cover",

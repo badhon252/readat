@@ -8,96 +8,73 @@ import PostCard from "./postCard";
 import NewsCard from "./NewsCard";
 import CategoriesLink from "../Category/CategoriesLInk";
 
-export default function CardList({
-  news,
-  title,
-}: {
-  news: NewsData;
+interface CardListProps {
+  news: NewsData; // Ensure news is an array of NewsData
   title: string;
-}) {
-  // Local state for posts and loading/error indicators
-  const [posts, setPosts] = useState<any[]>([]);
-  // const [loading, setLoading] = useState<boolean>(true);
-  // const [error, setError] = useState<string | null>(null);
+}
+
+export default function CardList({ news, title }: CardListProps) {
+  // Local state for posts
+  const [posts, setPosts] = useState<NewsData>([]); // Type posts as an array of NewsData
 
   // Update posts when news changes
   useEffect(() => {
-    if (news) {
-      setPosts(news);
+    if (news && news.length) {
+      setPosts(news.slice(0, 8)); // Limit to 9 posts directly
     }
   }, [news]);
 
-  // Display only the first 8 posts
-  const postsToShow = posts.slice(0, 9);
-
   return (
-    <div className=" rounded-lg m-4">
-      {/* "See All" Link */}
+    <div className="rounded-lg m-4">
+      {/* Header */}
       <div className="mt-4 px-4 py-4 flex flex-wrap justify-between items-center">
         <h1 className="text-4xl font-black">{title}</h1>
-        {title ? <CategoriesLink title={title} /> : ""}
+        {title && <CategoriesLink title={title} />}
       </div>
-      <div className="grid grid-cols-8 grid-rows-3 gap-6">
-        <div className="col-span-2 row-span-3 transform transition duration-500 hover:scale-105">
-          {postsToShow.length > 0 && (
+
+      {/* Responsive Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+        {posts.length > 0 && (
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2 row-span-3 transform transition duration-500 hover:scale-105">
             <NewsCard
-              title={postsToShow[0].title}
-              description={""}
-              source={postsToShow[0].source}
-              url={postsToShow[0].url}
-              image={postsToShow[0].image}
-              publishedAt={postsToShow[0].publishedAt}
-              height="h-[40rem]"
+              title={posts[0].title}
+              description={posts[0].description || ""} // Handle optional fields with fallback
+              source={posts[0].source || "Unknown Source"} // Provide fallback for optional fields
+              url={posts[0].url}
+              image={posts[0].image || "/default-image.jpg"} // Use default image if not present
+              publishedAt={posts[0].publishedAt || "Unknown Date"} // Handle optional date
+              height="h-[30rem] lg:h-[40rem]"
               width="w-full"
             />
-          )}
-        </div>
-        {postsToShow.length > 2 && (
-          <div className="col-span-2 col-start-3">
-            <PostCard post={postsToShow[2]} />
-          </div>
-        )}
-        {postsToShow.length > 3 && (
-          <div className="col-span-2 col-start-3">
-            <PostCard post={postsToShow[3]} />
-          </div>
-        )}
-        {postsToShow.length > 4 && (
-          <div className="col-span-2 col-start-3">
-            <PostCard post={postsToShow[4]} />
-          </div>
-        )}
-        <div className="col-span-2 row-span-3 col-start-5 row-start-1 transform transition duration-500 hover:scale-105">
-          {postsToShow.length > 5 && (
-            <NewsCard
-              title={postsToShow[1].title}
-              description={""}
-              source={postsToShow[1].source}
-              url={postsToShow[1].url}
-              image={postsToShow[1].image}
-              publishedAt={postsToShow[1].publishedAt}
-              height="h-[40rem]"
-              width="w-full"
-            />
-          )}
-        </div>
-        {postsToShow.length > 5 && (
-          <div className="col-span-2 col-start-7 row-start-1">
-            <PostCard post={postsToShow[5]} />
           </div>
         )}
 
-        {postsToShow.length > 6 && (
-          <div className="col-span-2 col-start-7 row-start-2">
-            <PostCard post={postsToShow[6]} />
+        {/* Post cards */}
+        {posts.slice(1).map((post, index) => (
+          <div
+            key={index} // Ensure unique key for each element in the list
+            className={`col-span-1 sm:col-span-2 lg:col-span-2 ${
+              index === 1
+                ? "row-span-3 transform transition duration-500 hover:scale-105"
+                : ""
+            }`}
+          >
+            {index === 1 ? (
+              <NewsCard
+                title={post.title}
+                description={post.description || ""}
+                source={post.source || "Unknown Source"}
+                url={post.url}
+                image={post.image || "/default-image.jpg"}
+                publishedAt={post.publishedAt || "Unknown Date"}
+                height="h-[30rem] lg:h-[40rem]"
+                width="w-full"
+              />
+            ) : (
+              <PostCard post={post} />
+            )}
           </div>
-        )}
-
-        {postsToShow.length > 7 && (
-          <div className="col-span-2 col-start-7 row-start-3">
-            <PostCard post={postsToShow[7]} />
-          </div>
-        )}
+        ))}
       </div>
     </div>
   );
