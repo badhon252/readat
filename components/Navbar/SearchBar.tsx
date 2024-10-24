@@ -8,9 +8,9 @@ interface SearchInputProps {
 }
 
 export default function SearchInput({ setIsModalOpen }: SearchInputProps) {
-  const { handleSearch, searchResults } = useSearchNews();
+  const { handleSearch } = useSearchNews();
   const [inputValue, setInputValue] = useState("");
-  const debouncedQuery = useDebouncedSearch(inputValue, 300);
+  const debouncedQuery = useDebouncedSearch(inputValue, 1000);
 
   // Perform search whenever the debounced query changes
   useEffect(() => {
@@ -28,8 +28,8 @@ export default function SearchInput({ setIsModalOpen }: SearchInputProps) {
 
   const handleIconClick = () => {
     // Avoid direct call to handleSearch, let useEffect handle it
-    // handleSearch(inputValue);
-    // setIsModalOpen(!!inputValue);
+    handleSearch(inputValue);
+    setIsModalOpen(!!inputValue);
   };
 
   return (
@@ -37,7 +37,7 @@ export default function SearchInput({ setIsModalOpen }: SearchInputProps) {
       <input
         type="text"
         placeholder="Search..."
-        className="ml-2 p-1 border border-gray-300 rounded w-full"
+        className="lg:ml-2 my-4 p-1 border border-gray-300 rounded w-full"
         value={inputValue}
         onChange={(e) => handleInputChange(e.target.value)}
       />

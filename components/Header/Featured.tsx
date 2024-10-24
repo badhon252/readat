@@ -38,7 +38,7 @@ export function CarouselPlugin() {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full max-w-screen mx-auto md:my-32"
+      className="w-full max-w-screen mx-auto md:my-32 px-4"
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
       aria-roledescription="carousel"

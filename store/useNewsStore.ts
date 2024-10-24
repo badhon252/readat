@@ -34,8 +34,9 @@ interface NewsResponse {
 // Define the Zustand store with persistence
 interface NewsStore {
   setAllNews: any;
-  setSearchQuery: any;
-  setSearchResults: any;
+  setSearchQuery: (query: string) => void;
+  setSearchResults: (results: Article[]) => void;
+
   featuredNews: Article[] | null;
   sportsNews: Article[] | null;
   travelNews: Article[] | null;
@@ -73,6 +74,9 @@ const customLocalStorage: PersistStorage<NewsStore> = {
     localStorage.removeItem(name);
   },
 };
+
+//! Filter duplicate data before asigning data on store
+//! set an cleanup schedule for localstorage data to avoid data overload or performance reduce
 
 // Zustand store with custom storage
 export const useNewsStore = create<NewsStore>()(
@@ -135,9 +139,8 @@ export const useNewsStore = create<NewsStore>()(
       setAllNews: (articles: any) => set((state) => ({ allNews: articles })),
       searchQuery: null,
       searchResults: null,
-      setSearchQuery: (query: any) => set((state) => ({ searchQuery: query })),
-      setSearchResults: (results: any) =>
-        set((state) => ({ searchResults: results })),
+      setSearchQuery: (query: string) => set({ searchQuery: query }),
+      setSearchResults: (results: Article[]) => set({ searchResults: results }),
     }),
     {
       name: "news-storage", // Local storage key
@@ -150,7 +153,7 @@ export const useNewsStore = create<NewsStore>()(
 const useFetchNews = (
   key: keyof NewsStore,
   url: string,
-  dedupingInterval = 600000
+  dedupingInterval = 60000
 ) => {
   const setNews = useNewsStore((state) => state.setNews);
   const setError = useNewsStore((state) => state.setError);
@@ -168,7 +171,8 @@ const useFetchNews = (
     if (data) {
       setNews(key, data.articles);
       if (allNews) {
-        setAllNews([...allNews, ...data.articles]);
+        //add filtering for duplicate data for cleanup
+        setAllNews([...data.articles]);
       } else {
         setAllNews(data.articles);
       }
