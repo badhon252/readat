@@ -135,8 +135,22 @@ export const useNewsStore = create<NewsStore>()(
         set((state) => ({
           isLoading: { ...state.isLoading, [key]: loading },
         })),
-      allNews: null,
-      setAllNews: (articles: any) => set((state) => ({ allNews: articles })),
+      allNews: [],
+      setAllNews: (newArticles: Article[]) =>
+        set((state) => ({
+          allNews: [
+            ...(state.allNews ?? []).filter(
+              (existingArticle) =>
+                !newArticles.some(
+                  (newArticle) =>
+                    newArticle.title === existingArticle.title &&
+                    newArticle.publishedAt === existingArticle.publishedAt
+                )
+            ),
+            ...newArticles, // Add new articles
+          ],
+        })),
+
       searchQuery: null,
       searchResults: null,
       setSearchQuery: (query: string) => set({ searchQuery: query }),
@@ -159,7 +173,6 @@ const useFetchNews = (
   const setError = useNewsStore((state) => state.setError);
   const setLoading = useNewsStore((state) => state.setLoading);
   const setAllNews = useNewsStore((state) => state.setAllNews);
-  const allNews = useNewsStore((state) => state.allNews);
 
   const { data, error } = useSWR<NewsResponse>(url, axiosFetcher, {
     dedupingInterval,
@@ -170,17 +183,12 @@ const useFetchNews = (
   useEffect(() => {
     if (data) {
       setNews(key, data.articles);
-      if (allNews) {
-        //add filtering for duplicate data for cleanup
-        setAllNews([...data.articles]);
-      } else {
-        setAllNews(data.articles);
-      }
+      setAllNews(data.articles);
     } else if (error) {
       setError(key, error.message);
     }
     setLoading(key, false);
-  }, [data, error]);
+  }, [data, error, key]);
 };
 
 // Custom hooks for each news section

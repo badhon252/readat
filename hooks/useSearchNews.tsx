@@ -6,10 +6,11 @@ export const useSearchNews = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const allNews = useNewsStore((state) => state.allNews);
   const [searchResults, setSearchResults] = useState<Article[]>([]);
-
   const handleSearch = useCallback(
     (query: string) => {
       setSearchQuery(query);
+      console.log(allNews);
+      console.log("query: ", query);
       if (allNews && query) {
         const results = allNews.filter(
           (article) =>

@@ -17,7 +17,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useNewsStore } from "@/store/useNewsStore";
 import { useSearchNews } from "@/hooks/useSearchNews";
 import {
   Card,
@@ -26,29 +25,36 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useDebouncedSearch } from "@/utils/debounce";
+import { useEffect, useState } from "react";
 
 export function PopoverSearchWithModal() {
-  const [open, setOpen] = React.useState(false);
-  const [showResults, setShowResults] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+  const debouncedQuery = useDebouncedSearch(inputValue, 1000);
   const { searchQuery, searchResults, handleSearch } = useSearchNews();
-  const setSearchQuery = useNewsStore((state) => state.setSearchQuery);
+
+  useEffect(() => {
+    handleSearch(debouncedQuery);
+  }, [handleSearch, debouncedQuery]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    handleSearch(inputValue);
+    handleSearch(debouncedQuery);
     setOpen(false);
     setShowResults(true);
+    console.log(searchResults);
+    // if (!searchQuery) alert("Enter input to search!!");
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
   };
 
   const handleCloseResults = () => {
     setShowResults(false);
     setInputValue("");
-    setSearchQuery("");
   };
 
   return (
@@ -67,7 +73,7 @@ export function PopoverSearchWithModal() {
               placeholder="Search news..."
               className="flex-1"
               value={inputValue}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e.target.value)}
             />
             <Button type="submit" size="sm">
               Search
@@ -107,7 +113,12 @@ export function PopoverSearchWithModal() {
                 </Card>
               ))
             ) : (
-              <p>No results found.</p>
+              <>
+                <p>No results found.</p>{" "}
+                <h1 className="text-red-500 text-3xl">
+                  {!inputValue && "Enter input value to search!"}
+                </h1>
+              </>
             )}
           </div>
           <Button
