@@ -77,6 +77,7 @@ const customLocalStorage: PersistStorage<NewsStore> = {
 
 //! Filter duplicate data before asigning data on store
 //! set an cleanup schedule for localstorage data to avoid data overload or performance reduce
+const MAX_ARTICLES_CACHE = 200; // Define a maximum limit for cached articles
 
 // Zustand store with custom storage
 export const useNewsStore = create<NewsStore>()(
@@ -137,19 +138,27 @@ export const useNewsStore = create<NewsStore>()(
         })),
       allNews: [],
       setAllNews: (newArticles: Article[]) =>
-        set((state) => ({
-          allNews: [
-            ...(state.allNews ?? []).filter(
-              (existingArticle) =>
-                !newArticles.some(
-                  (newArticle) =>
-                    newArticle.title === existingArticle.title &&
-                    newArticle.publishedAt === existingArticle.publishedAt
-                )
-            ),
-            ...newArticles, // Add new articles
-          ],
-        })),
+        set((state) => {
+          const uniqueNewArticles = newArticles.filter(
+            (newArticle) =>
+              !(state.allNews ?? []).some(
+                (existingArticle) => existingArticle.url === newArticle.url
+              )
+          );
+
+          // Merge new unique articles with the existing allNews array
+          const updatedAllNews = [
+            ...uniqueNewArticles,
+            ...(state.allNews ?? []),
+          ];
+
+          // Limit the allNews to MAX_ARTICLES_CACHE by slicing it
+          const limitedAllNews = updatedAllNews.slice(0, MAX_ARTICLES_CACHE);
+
+          return {
+            allNews: limitedAllNews,
+          };
+        }),
 
       searchQuery: null,
       searchResults: null,

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { DropdownMenuDemo } from "../Category/Component";
-import { PopoverSearchbox } from "../PopoverSearch";
 import { PopoverSearchWithModal } from "../PopoverSearchWithModal";
 
 export default function NavComponent() {
