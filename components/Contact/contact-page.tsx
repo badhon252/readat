@@ -44,7 +44,7 @@ export default function ContactPage() {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div className="ml-3 text-base text-gray-500">
-                  <p>+1 (555) 123-4567</p>
+                  <p>+8801706107019</p>
                 </div>
               </div>
               <div className="flex">
@@ -58,15 +58,24 @@ export default function ContactPage() {
             </dl>
             <div className="mt-8">
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-400 hover:text-gray-500">
+                <a
+                  href="https://github.com/badhon252"
+                  className="text-gray-400 hover:text-gray-500"
+                >
                   <span className="sr-only">GitHub</span>
                   <Github className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-gray-500">
+                <a
+                  href="https://x.com/badhon252"
+                  className="text-gray-400 hover:text-gray-500"
+                >
                   <span className="sr-only">Twitter</span>
                   <Twitter className="h-6 w-6" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-gray-500">
+                <a
+                  href="https://linkedin.com/in/khalidhossainbadhon"
+                  className="text-gray-400 hover:text-gray-500"
+                >
                   <span className="sr-only">LinkedIn</span>
                   <Linkedin className="h-6 w-6" />
                 </a>
