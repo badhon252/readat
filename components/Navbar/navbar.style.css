@@ -1,0 +1,12 @@
+.active {
+  background: yellow;
+  color: #0a0a0a;
+}
+
+#NavComponent a {
+  padding: 0.2rem 1rem;
+}
+
+a:focus {
+  border: #0a0a0a73;
+}
