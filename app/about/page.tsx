@@ -9,7 +9,7 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-            About ACONEWS
+            About "READAT"
           </h1>
           <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
             Your go-to source for the latest news from around the world,
@@ -112,10 +112,11 @@ export default function AboutPage() {
             {[
               "Next.js",
               "React",
+              "TypeScript",
+              "Shadcn-ui",
+              "Zustand",
               "Tailwind CSS",
               "GNews.io API",
-              "NYT API",
-              "Guardian API",
             ].map((tech, index) => (
               <span
                 key={index}
@@ -130,7 +131,7 @@ export default function AboutPage() {
         <div className="mt-16">
           <h2 className="text-3xl font-extrabold text-gray-900">Our Team</h2>
           <p className="mt-4 text-lg text-gray-500">
-            ACONEWS is developed and maintained by a passionate team of
+            READAT is developed and maintained by a passionate team of
             developers committed to delivering high-quality, up-to-date news
             content. We believe in the power of information and strive to make
             news accessible to everyone.

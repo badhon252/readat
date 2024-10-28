@@ -55,7 +55,9 @@ const NewsCard: React.FC<NewsCardProps> = ({
               <p className="text-slate-200 text-sm">{timeSince(publishedAt)}</p>
             ) : null}
           </div>
-          <CardTitle className="md:text-xl font-semibold">{title}</CardTitle>
+          <CardTitle className="md:text-2xl font-semibold dm-serif-text-bold">
+            {title}
+          </CardTitle>
           <CardDescription className="text-white">
             {description}
           </CardDescription>

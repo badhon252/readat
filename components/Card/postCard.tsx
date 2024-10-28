@@ -28,7 +28,7 @@ export default function PostCard({ post }: { post: Article }) {
         <CardContent className=" text-white  z-50">
           {/* Increased z-index */}
           <h1
-            className="text-white text-xl font-semibold "
+            className="text-white text-xl font-semibold dm-serif-text-bold"
             aria-label={`Read more about: ${post.title}`}
           >
             {post.title.slice(0, 50)}

@@ -1,6 +1,6 @@
 "use client";
 import HeroSection from "@/components/Header/HeroSection";
-import Navbar from "@/components/Navbar/Navbar";
+import LoadingScreen from "@/components/loading-screen";
 import Entertainment from "@/components/News/Entertainment/Entertainment";
 import HelthNews from "@/components/News/Helth/HelthNews";
 import LatestNews from "@/components/News/latest-news/LatestNews";
@@ -10,8 +10,20 @@ import ScienceNews from "@/components/News/scienceNews/ScienceNews";
 import Sports from "@/components/News/Sports/Sports";
 import Travel from "@/components/News/Travel/Travel";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate content loading
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
   return (
     <div className="container mx-auto border">
       {/* Featured  */}

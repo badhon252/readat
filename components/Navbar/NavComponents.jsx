@@ -3,7 +3,6 @@ import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { DropdownMenuDemo } from "../Category/Component";
 import { PopoverSearchWithModal } from "../PopoverSearchWithModal";
-import { Newspaper } from "lucide-react";
 
 export default function NavComponent() {
   return (
@@ -12,22 +11,20 @@ export default function NavComponent() {
       className="flex items-center justify-between px-4 bg-white dark:bg-gray-800 text-black container mx-auto py-8"
     >
       <Link href="/" className="flex items-center gap-2" prefetch={false}>
-        <Newspaper className="h-8 w-8" />
-        <span className="text-4xl font-semibold">READAT</span>
+        <NewsIcon className="h-6 w-6" />
+        <span className="text-lg font-semibold">READAT</span>
       </Link>
       <div className="hidden md:flex gap-4">
         <DropdownMenuDemo />
         <Link
           href="/about"
           className="text-lg font-medium hover:underline underline-offset-4"
-          prefetch={false}
         >
           About
         </Link>
         <Link
           href="/contact"
           className="text-lg font-medium hover:underline underline-offset-4"
-          prefetch={false}
         >
           Contact
         </Link>
@@ -44,24 +41,16 @@ export default function NavComponent() {
           {" "}
           {/* Apply styles here */}
           <div className="grid w-[200px] p-4">
-            <Link
-              href="#"
-              className="text-lg font-medium hover:underline underline-offset-4 my-3"
-              prefetch={false}
-            >
-              <DropdownMenuDemo />
-            </Link>
+            <DropdownMenuDemo />
             <Link
               href="/about"
-              className="text-lg font-medium hover:underline underline-offset-4 my-3"
-              prefetch={false}
+              className="text-lg font-medium hover:underline underline-offset-4 my-2"
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="text-lg font-medium hover:underline underline-offset-4 my-3"
-              prefetch={false}
+              className="text-lg font-medium hover:underline underline-offset-4 my-2"
             >
               Contact
             </Link>
@@ -94,10 +83,9 @@ function MenuIcon(props) {
   );
 }
 
-function MountainIcon(props) {
+function NewsIcon(props) {
   return (
     <svg
-      {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
@@ -107,8 +95,12 @@ function MountainIcon(props) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="lucide lucide-newspaper"
     >
-      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+      <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+      <path d="M18 14h-8" />
+      <path d="M15 18h-5" />
+      <path d="M10 6h8v4h-8V6Z" />
     </svg>
   );
 }

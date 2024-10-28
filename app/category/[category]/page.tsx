@@ -35,12 +35,12 @@ const CategoryPage: FC = () => {
   const newsData = newsStore[`${category}News`] || []; // Dynamic access
 
   return (
-    <div className="pt-20 min-h-screen mx-auto flex items-center flex-col justify-around container">
-      <h1 className="text-6xl font-black pt-8 text-purple-700">
-        Top Stories on {category}
+    <div className="min-h-screen mx-auto flex items-center flex-col justify-around container">
+      <h1 className="text-6xl font-black pt-8 text-purple-700 dm-serif-text-bold">
+        Top Stories on "{category}"!
       </h1>
 
-      <News news={newsData} title={""} len={8} />
+      <News news={newsData} title={""} len={10} />
     </div>
   );
 };

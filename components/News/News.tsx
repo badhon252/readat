@@ -13,6 +13,7 @@ import Link from "next/link"; // Import Link for navigation
 import { NewsData } from "@/type/types";
 import { timeSince } from "@/utils/timeUtils";
 import CategoriesLink from "../Category/CategoriesLInk";
+import fallbackImage from "@/Assets/fImg.png";
 
 export default function News({
   news,
@@ -42,7 +43,7 @@ export default function News({
     <div className="rounded-lg my-12">
       {/* "See All" Link */}
       <div className="mt-4 px-4 py-4 flex justify-between items-center">
-        <h1 className="text-4xl font-black">{title}</h1>
+        <h1 className="text-4xl font-black ">{title} News</h1>
         {title ? <CategoriesLink title={title} /> : ""}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
@@ -51,9 +52,11 @@ export default function News({
             {/* Card content including image and description should have size and length limitations */}
             <CardHeader>
               <img
-                src={post.image}
+                src={post.image || fallbackImage}
                 alt={post.title}
                 className="w-full h-40 object-cover rounded-lg" // Fixed height (adjust as needed)
+                width={500}
+                height={500}
               />
             </CardHeader>
             <CardContent className="flex-grow">
@@ -68,7 +71,7 @@ export default function News({
                   {timeSince(post.publishedAt)}
                 </p>
               </div>
-              <CardTitle className="text-xl font-semibold text-slate-800">
+              <CardTitle className="text-xl font-black text-slate-800 dm-serif-text-bold ">
                 {post.title}
               </CardTitle>
 
@@ -84,7 +87,7 @@ export default function News({
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-slate-700 text-white rounded hover:bg-slate-950"
               >
-                Continue reading..
+                Continue reading
               </a>
               {/* <p className="px-2 text-sm text-right">5 min read</p> */}
             </CardFooter>

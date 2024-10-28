@@ -78,7 +78,7 @@ export function CarouselPlugin() {
                   href={article.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-base md:text-xl lg:text-3xl font-semibold hover:underline focus:outline focus:outline-2 focus:outline-blue-500"
+                  className="block dm-serif-text-bold text-base md:text-xl lg:text-3xl hover:underline focus:outline focus:outline-2 focus:outline-blue-500"
                   aria-label={`Read more about: ${article.title}`}
                 >
                   {article.title}

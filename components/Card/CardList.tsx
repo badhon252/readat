@@ -28,7 +28,7 @@ export default function CardList({ news, title }: CardListProps) {
     <div className="rounded-lg m-4">
       {/* Header */}
       <div className="mt-4 px-4 py-4 flex flex-wrap justify-between items-center">
-        <h1 className="text-4xl font-black">{title}</h1>
+        <h1 className="text-4xl font-black dm-serif-text-bold">{title} News</h1>
         {title && <CategoriesLink title={title} />}
       </div>
 

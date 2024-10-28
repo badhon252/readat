@@ -20,13 +20,12 @@ import {
 } from "@/components/ui/card";
 import { useDebouncedSearch } from "@/utils/debounce";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Badge } from "@/components/ui/badge";
 
 export function PopoverSearchWithModal() {
   const [open, setOpen] = React.useState(false);
   const [showResults, setShowResults] = React.useState(false);
   const [inputValue, setInputValue] = React.useState("");
-  const debouncedQuery = useDebouncedSearch(inputValue, 1500);
+  const debouncedQuery = useDebouncedSearch(inputValue, 1200);
   const { searchQuery, searchResults, handleSearch, isLoading, error } =
     useSearchNews();
 
@@ -69,7 +68,7 @@ export function PopoverSearchWithModal() {
         <PopoverTrigger asChild>
           <Button
             variant="outline"
-            className="w-10 h-10 rounded-full p-0"
+            className="w-10 h-10 rounded-full p-0 md:my-0 my-3"
             aria-label="Open search"
           >
             <Search className="h-4 w-4" />
@@ -106,14 +105,6 @@ export function PopoverSearchWithModal() {
         <DialogContent className="sm:max-w-[700px] h-[80vh] max-h-[80vh] bg-white p-0 flex flex-col">
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">Search Results</h2>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleCloseResults}
-              aria-label="Close search results"
-            >
-              <X className="h-4 w-4" />
-            </Button>
           </div>
           <div className="p-4 bg-muted">
             <p className="text-sm text-muted-foreground">
@@ -147,15 +138,14 @@ export function PopoverSearchWithModal() {
                               {article.title}
                             </CardTitle>
                             <CardDescription className="mt-1">
-                              {article.source.name} •{" "}
+                              <span className="font-black">
+                                {article.source.name} •{" "}
+                              </span>
                               {new Date(
                                 article.publishedAt
                               ).toLocaleDateString()}
                             </CardDescription>
                           </div>
-                          <Badge variant="secondary" className="ml-2">
-                            {article.source.name}
-                          </Badge>
                         </div>
                       </CardHeader>
                       <CardContent className="p-4 pt-0">

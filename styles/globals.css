@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=DM+Serif+Text&family=Raleway:wght@900&display=swap");
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -89,4 +91,23 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Google fonts  */
+.dm-serif-text-bold {
+  font-family: "DM Serif Text", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.dm-serif-text-medium {
+  font-family: "DM Serif Text", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
 }
