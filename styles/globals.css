@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=DM+Serif+Text&family=Raleway:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap");
 
 :root {
   --background: #ffffff;
@@ -96,7 +99,7 @@ body {
 /* Google fonts  */
 .dm-serif-text-bold {
   font-family: "DM Serif Text", serif;
-  font-weight: 800;
+  font-weight: 900;
   font-style: normal;
 }
 
@@ -109,5 +112,24 @@ body {
 .dm-serif-text-regular {
   font-family: "DM Serif Text", serif;
   font-weight: 400;
+  font-style: normal;
+}
+
+.climate-crisis-font {
+  font-family: "Climate Crisis", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.black-ops-one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.saira-stencil-one-regular {
+  font-family: "Saira Stencil One", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }

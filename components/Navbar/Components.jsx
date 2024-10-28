@@ -13,7 +13,7 @@ export default function NavComponent() {
     >
       <Link href="/" className="flex items-center gap-2" prefetch={false}>
         <Newspaper className="h-8 w-8" />
-        <span className="text-4xl font-semibold">READAT</span>
+        <h1 className="text-4xl font-black ">READAT</h1>
       </Link>
       <div className="hidden md:flex gap-4">
         <DropdownMenuDemo />
